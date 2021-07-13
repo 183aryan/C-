@@ -1,13 +1,33 @@
 #include <iostream>
-#include <cstdio>
 using namespace std;
 
-int main() {
-    // Complete the code.
-    int a,b;
-    string c[]={"","one","two","three","four","five","six","seven","eight","nine"};
-    cin>>a>>b;
-    for(int i=a;i<=b;i++)
-        cout<<((i<=9)?c[i]:((i%2==0)?"even":"odd"))<<endl;
+int main()
+{
+    int t, n, a[26] = {0};
+    string s;
+    cin >> t;
+    while (t--)
+    {
+        cin >> n;
+        for (int i = 0; i < n; i++)
+        {
+            cin >> s;
+
+            for (int j = 0; j < s.length(); j++)
+            {
+                a[s[j] - 'a']++;
+            }
+        }
+        int c = 1;
+        for (int i = 0; i < 26; i++)
+        {
+            if (a[i] % n != 0)
+            {
+                c = 0;
+                break;
+            }
+        }
+        cout << (c ? "YES":"NO") << endl;
+    }
     return 0;
 }
